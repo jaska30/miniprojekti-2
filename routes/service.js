@@ -1,10 +1,13 @@
 const Pool = require('pg').Pool;
 require('dotenv').config();
 
+const USER = process.env.PGUSER;
+const PASSWORD = process.env.PGPASSWORD;
+
 
 const conopts = {
-    user: 'postgres',
-    password: 'soijapoika3',
+    user: USER,
+    password: PASSWORD,
     host: 'localhost',
     database: 'miniprojekti'
 }
@@ -13,7 +16,7 @@ const pool = new Pool(conopts);
 
 
 const getPics = (cb) => {
-    pool.query('SELECT * from TAULU', (err, results) => {
+    pool.query('SELECT * from pics', (err, results) => {
         if (err) throw err;
         console.dir(results);
         cb(results.rows);
