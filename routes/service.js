@@ -16,7 +16,8 @@ const pool = new Pool(conopts);
 
 
 const getPics = (cb) => {
-    pool.query('SELECT * from pics', (err, results) => {
+
+    pool.query('SELECT * from images', (err, results) => {
         if (err) throw err;
         console.dir(results);
         cb(results.rows);
