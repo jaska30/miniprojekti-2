@@ -35,7 +35,7 @@ const postResults = (uusiTulos, cb) => {
 }
 
 const getResults = (cb) => {
-    pool.query('SELECT * from results', (err, results) => {
+    pool.query('SELECT * from results ORDER BY score LIMIT 10', (err, results) => {
         if (err) throw err;
         console.dir(results);
         cb(results.rows);
